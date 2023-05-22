@@ -1,4 +1,5 @@
 package ru.netology.page;
+
 import ru.netology.data.DataHelper;
 
 import com.codeborne.selenide.Condition;
@@ -19,12 +20,12 @@ public class MoneyTransferPage {
     private final SelenideElement error = $("[data-test-id=error-notification]");
 
     public MoneyTransferPage() {
-        heading.shouldBe( visible);
+        heading.shouldBe(visible);
     }
 
     public DashboardPage transferForm(String sum, DataHelper.CardNumber cardNumber) {
         amount.setValue(sum);
-        from.setValue(String.valueOf(cardNumber));
+        from.setValue(cardNumber.getCardNumber());
         transferButton.click();
         return new DashboardPage();
 
